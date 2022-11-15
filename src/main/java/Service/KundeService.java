@@ -8,7 +8,6 @@ public class KundeService extends Kunde {
     private Kunde kunde = new Kunde();
     Integer kontoStand;
 
-
     public void einlogen(String iban, String password) {
         int attempt = 0;
         while (attempt < 3) {
@@ -29,7 +28,7 @@ public class KundeService extends Kunde {
                 vollBild();
             }
         }
-        System.out.println("Sie haben 3-mal falsch versucht. Versuchen Sie später nochmals Bitte!");
+        System.out.println("Sie haben 3-mal mit falschen Daten versucht. Versuchen Sie später nochmals Bitte!");
     }
 
 
@@ -47,7 +46,7 @@ public class KundeService extends Kunde {
                 kontostand();
                 break;
             case 3:
-                geldAbheben();
+                geldAuszahlen();
                 break;
             case 4:
                 passwordAndern();
@@ -65,18 +64,18 @@ public class KundeService extends Kunde {
     public void geldEinzahlen() {
         Scanner scan = new Scanner(System.in);
         System.out.println("Bitte zahlen Sie ihr Geld ein: ");
-        int neuGeld = scan.nextInt();
-        kontoStand = neuGeld + kunde.getKonto();
+        int einzahltGeld = scan.nextInt();
+        kontoStand = einzahltGeld + kunde.getKonto();
         System.out.println("Kontostand ist " + kontoStand + " EUR");
         vollBild();
 
     }
 
-    public void geldAbheben() {
+    public void geldAuszahlen() {
         Scanner scan = new Scanner(System.in);
         System.out.println("Wie viel Geld möchten Sie abheben: : ");
-        int geldAbheben = scan.nextInt();
-        kontoStand = kontoStand - geldAbheben;
+        int auszahltGeld = scan.nextInt();
+        kontoStand = kontoStand - auszahltGeld;
         System.out.println("Ihr Konto stand ist: " + kontoStand + " EUR");
         vollBild();
     }
@@ -92,8 +91,8 @@ public class KundeService extends Kunde {
         String passwordKontrol = scan.next();
         if (passwordKontrol.equals(kunde.getPaassWord())) {
             System.out.println("Geben Sie Bitte neu Password ein");
-            String pass = scan.next();
-            kunde.setPaassWord(pass);
+            String nuePassword = scan.next();
+            kunde.setPaassWord(nuePassword);
 
             System.out.println("Ihr Neu Password ist: " + kunde.getPaassWord());
             vollBild();
