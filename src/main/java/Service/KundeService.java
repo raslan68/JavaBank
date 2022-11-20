@@ -34,7 +34,7 @@ public class KundeService extends Kunde {
 
     public void vollBild() {
         System.out.println("\n Bitte wählen Sie eine Funktion aus" + "\n Geld Einzahlen: 1" + "\n Kontozustand :  2"
-                + "\n Geld Auszahlen :  3" + "\n Password Ändern : 4" + "\n Exit : 5");
+                + "\n Geld Auszahlen :  3" + "\n Password Ändern : 4" + "\n Geld Senden: 5" + "\n Exit : 6");
         int nummer = 0;
         Scanner scan = new Scanner(System.in);
         nummer = scan.nextInt();
@@ -52,6 +52,9 @@ public class KundeService extends Kunde {
                 passwordAndern();
                 break;
             case 5:
+                geldSenden();
+                break;
+            case 6:
                 exit();
                 break;
             default:
@@ -73,11 +76,19 @@ public class KundeService extends Kunde {
 
     public void geldAuszahlen() {
         Scanner scan = new Scanner(System.in);
-        System.out.println("Wie viel Geld möchten Sie abheben: : ");
+        System.out.println("Wie viel Geld möchten Sie abheben: ");
         int auszahltGeld = scan.nextInt();
-        kontoStand = kontoStand - auszahltGeld;
-        System.out.println("Ihr Konto stand ist: " + kontoStand + " EUR");
-        vollBild();
+        if (auszahltGeld > kontoStand) {
+            System.out.println("Leider Sie haben kein " + auszahltGeld + "eur auf Ihrem Konto.! " +
+                    "\nGeben Sie Bitte gültig Betrag ein oder zuerst Geld auf Ihr Konto einzahlen!");
+            vollBild();
+        } else {
+
+            kontoStand = kontoStand - auszahltGeld;
+            System.out.println("Ihr Konto stand ist: " + kontoStand + " EUR");
+            vollBild();
+        }
+
     }
 
     public void kontostand() {
@@ -97,6 +108,25 @@ public class KundeService extends Kunde {
             System.out.println("Ihr Neu Password ist: " + kunde.getPaassWord());
             vollBild();
         }
+    }
+
+    public void geldSenden() {
+        Scanner scan = new Scanner(System.in);
+        System.out.println("Wie viel Geld möchten Sie senden: ");
+        int sendGeld = scan.nextInt();
+        System.out.println("Bitte geben Sie Ihre Iban-Adresse ein: ");
+        String ibanEmpänger = scan.next();
+        if (sendGeld >kontoStand){
+            System.out.println("Leider Sie haben kein "+sendGeld +"eur auf Ihrem Konto.! " +
+                    "\nGeben Sie Bitte gültig Betrag ein!\n");
+            vollBild();
+        }else {
+            System.out.println("Ihr angegebene Betrag wurde gesendet!");
+            kontoStand = kontoStand - sendGeld;
+            System.out.println("Ihr Konto stand ist: " + kontoStand + " EUR");
+            vollBild();
+        }
+
     }
 
     public void exit() {
