@@ -4,7 +4,7 @@ public class Kunde {
 
     private String iban = "DE9876543";
     private String paassWord = "2468";
-    static Integer konto = 0;
+    private Integer konto = 0;
 
     public Kunde() {
     }
@@ -34,7 +34,4 @@ public class Kunde {
         return konto;
     }
 
-    public void setKonto(Integer konto) {
-        this.konto = konto;
-    }
 }

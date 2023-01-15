@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class KundeService extends Kunde {
     private Kunde kunde = new Kunde();
-    Integer kontoStand = kunde.getKonto();
+    private Integer kontoStand = kunde.getKonto();
 
     public void einlogen(String iban, String password) {
         int attempt = 0;
