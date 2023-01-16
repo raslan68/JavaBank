@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class KundeService extends Kunde {
     private Kunde kunde = new Kunde();
-    private Integer kontoStand = kunde.getKonto();
+    private Double kontoStand = kunde.getKonto();
 
     public void einlogen(String iban, String password) {
         int attempt = 0;
@@ -113,6 +113,11 @@ public class KundeService extends Kunde {
     public void geldSenden() {
         Scanner scan = new Scanner(System.in);
         System.out.println("Wie viel Geld möchten Sie senden: ");
+        while (!scan.hasNextInt()){
+            System.out.println("Leider Falsche Daten eingegeben!");
+            vollBild();
+        }
+
         int sendGeld = scan.nextInt();
         System.out.println("Bitte geben Sie Ihre Iban-Adresse ein: ");
         String ibanEmpänger = scan.next();
@@ -120,6 +125,8 @@ public class KundeService extends Kunde {
             System.out.println("Leider Sie haben kein "+sendGeld +"eur auf Ihrem Konto.! " +
                     "\nGeben Sie Bitte gültig Betrag ein!\n");
             vollBild();
+        }else if(sendGeld <= 0 ){
+            System.out.println("Ungültige Betrag eingegeben!");
         }else {
             System.out.println("Ihr angegebene Betrag wurde gesendet!");
             kontoStand = kontoStand - sendGeld;
@@ -133,6 +140,11 @@ public class KundeService extends Kunde {
         System.out.println("Sie haben erfolgreich ausgeloggt");
         System.exit(0);
 
+    }
+
+    public static void main(String[] args) {
+        KundeService k = new KundeService();
+        k.einlogen("DE9876543", "2468");
     }
 
 }

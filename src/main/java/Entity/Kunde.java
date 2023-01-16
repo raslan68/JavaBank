@@ -4,7 +4,7 @@ public class Kunde {
 
     private String iban = "DE9876543";
     private String paassWord = "2468";
-    private Integer konto = 0;
+    private Double konto = (double) 0;
 
     public Kunde() {
     }
@@ -30,7 +30,7 @@ public class Kunde {
         return paassWord;
     }
 
-    public Integer getKonto() {
+    public Double getKonto() {
         return konto;
     }
 
