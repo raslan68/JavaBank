@@ -128,7 +128,7 @@ public class KundeService extends Kunde {
         }else if(sendGeld <= 0 ){
             System.out.println("Ungültige Betrag eingegeben!");
         }else {
-            System.out.println("Ihr angegebene Betrag wurde gesendet!");
+            System.out.println("Ihr angegebene Betrag wurde erfolgreich gesendet!");
             kontoStand = kontoStand - sendGeld;
             System.out.println("Ihr Konto stand ist: " + kontoStand + " EUR");
             vollBild();
