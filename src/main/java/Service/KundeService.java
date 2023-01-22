@@ -60,7 +60,6 @@ public class KundeService extends Kunde {
             default:
                     System.out.println("Falsche auswahl! Bitte nochmal auswählen");
                 vollBild();
-
         }
     }
 
