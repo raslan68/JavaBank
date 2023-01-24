@@ -12,7 +12,7 @@ public class KundeService extends Kunde {
         int attempt = 0;
         while (attempt < 3) {
             Scanner scan = new Scanner(System.in);
-            System.out.println("Bitte geben Sie ihre IBAN ein: ");
+            System.out.println("Bitte geben Sie ihre IBAN Nummer ein: ");
             iban = scan.next();
             System.out.println("Bitte geben Sie ihr Password ein: ");
             password = scan.next();
@@ -75,7 +75,7 @@ public class KundeService extends Kunde {
 
     public void geldAuszahlen() {
         Scanner scan = new Scanner(System.in);
-        System.out.println("Wie viel Geld möchten Sie abheben: ");
+        System.out.println("Wie viel Geld möchten Sie haben: ");
         int auszahltGeld = scan.nextInt();
         if (auszahltGeld > kontoStand) {
             System.out.println("Leider Sie haben kein " + auszahltGeld + "eur auf Ihrem Konto.! " +
@@ -84,7 +84,7 @@ public class KundeService extends Kunde {
         } else {
 
             kontoStand = kontoStand - auszahltGeld;
-            System.out.println("Ihr Konto stand ist: " + kontoStand + " EUR");
+            System.out.println("Ihr Kontostand ist: " + kontoStand + " EUR");
             vollBild();
         }
 
