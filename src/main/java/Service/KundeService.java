@@ -121,7 +121,7 @@ public class KundeService extends Kunde {
         System.out.println("Bitte geben Sie Ihre Iban-Adresse ein: ");
         String ibanEmpänger = scan.next();
         if (sendGeld >kontoStand){
-            System.out.println("Leider Sie haben kein "+sendGeld +"eur auf Ihrem Konto.! " +
+            System.out.println("Leider Sie haben kein "+sendGeld +"eur auf Ihrem Konto! " +
                     "\nGeben Sie Bitte gültig Betrag ein!\n");
             vollBild();
         }else if(sendGeld <= 0 ){
@@ -143,7 +143,7 @@ public class KundeService extends Kunde {
 
     public static void main(String[] args) {
         KundeService k = new KundeService();
-        k.einlogen("DE9876543", "2468");
+        k.einlogen("DE98765432", "2468");
     }
 
 }
