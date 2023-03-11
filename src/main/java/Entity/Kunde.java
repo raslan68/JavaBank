@@ -1,10 +1,12 @@
 package Entity;
 
+import java.math.BigDecimal;
+
 public class Kunde {
 
-    private String iban = "DE9876543";
+    private String iban = "DE98765432";
     private String paassWord = "2468";
-    private Double konto = (double) 0;
+    private double konto =  0.0;
 
     public Kunde() {
     }
@@ -30,7 +32,7 @@ public class Kunde {
         return paassWord;
     }
 
-    public Double getKonto() {
+    public double getKonto() {
         return konto;
     }
 
