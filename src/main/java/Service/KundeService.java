@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class KundeService extends Kunde {
     private Kunde kunde = new Kunde();
-    private Double kontoStand = kunde.getKonto();
+    private double kontoStand = kunde.getKonto();
 
     public void einlogen(String iban, String password) {
         int attempt = 0;
@@ -66,7 +66,7 @@ public class KundeService extends Kunde {
     public void geldEinzahlen() {
         Scanner scan = new Scanner(System.in);
         System.out.println("Bitte zahlen Sie ihr Geld ein: ");
-        int einzahltGeld = scan.nextInt();
+        double einzahltGeld = scan.nextDouble();
         kontoStand = einzahltGeld + kunde.getKonto();
         System.out.println("Kontostand ist " + kontoStand + " EUR");
         vollBild();
@@ -76,7 +76,7 @@ public class KundeService extends Kunde {
     public void geldAuszahlen() {
         Scanner scan = new Scanner(System.in);
         System.out.println("Wie viel Geld möchten Sie haben: ");
-        int auszahltGeld = scan.nextInt();
+        double auszahltGeld = scan.nextDouble();
         if (auszahltGeld > kontoStand) {
             System.out.println("Leider Sie haben kein " + auszahltGeld + "eur auf Ihrem Konto.! " +
                     "\nGeben Sie Bitte gültig Betrag ein oder zuerst Geld auf Ihr Konto einzahlen!");
@@ -112,12 +112,12 @@ public class KundeService extends Kunde {
     public void geldSenden() {
         Scanner scan = new Scanner(System.in);
         System.out.println("Wie viel Geld möchten Sie senden: ");
-        while (!scan.hasNextInt()){
+        while (!scan.hasNextDouble()){
             System.out.println("Leider Falsche Daten eingegeben!");
             vollBild();
         }
 
-        int sendGeld = scan.nextInt();
+        double sendGeld = scan.nextDouble();
         System.out.println("Bitte geben Sie Ihre Iban-Adresse ein: ");
         String ibanEmpänger = scan.next();
         if (sendGeld >kontoStand){
